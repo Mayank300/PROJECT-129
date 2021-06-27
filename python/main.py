@@ -4,7 +4,12 @@ import pandas as pd
 data_set_1 = []
 data_set_2 = []
 
-
+df = pd.read_csv('./csv/final_data.csv')
+df = df[df["no"].notna()]
+df = df[df["Star_name"].notna()]
+df = df[df["Distance"].notna()]
+df = df[df["Mass"].notna()]
+df = df[df["Radius"].notna()]
 
 
 with open('./csv/bright_stars.csv') as f:
@@ -52,7 +57,3 @@ with open('./csv/final_data.csv', 'a+') as f:
     csv_writer = csv.writer(f)
     csv_writer.writerow(header)
     csv_writer.writerows(final_planet_data)
-
-
-df = pd.read_csv('./csv/final_data.csv')
-df = df[df['Luminosity'].notna()]
